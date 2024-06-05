@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container p-5">
+        <div class="col-md-7">
+            <div class="form-group">
+                <label for="">Name</label>
+                <input type="text" name="" id="userName" class="form-control" placeholder="" aria-describedby="helpId">
+
+                <small></small>
+            </div>
+
+            <div class="form-group">
+                <label for="">Email</label>
+                <input type="text" name="" id="userEmail" class="form-control" placeholder="" aria-describedby="helpId">
+
+                <small></small>
+            </div>
+
+            <div class="form-group">
+                <label for="">Password</label>
+                <input type="text" name="" id="userPassword" class="form-control" placeholder="" aria-describedby="helpId">
+
+                <small></small>
+            </div>
+
+            <div class="form-group">
+                <label for="">ConfirmPassword</label>
+                <input type="text" name="" id="userConfirmpassword" class="form-control" placeholder="" aria-describedby="helpId">
+
+                <small></small>
+            </div>
+            <button class="btn btn-info" id="sub">submit</button>
+        </div>
+    </div>
+    <script>
+        //Username RE
+        $("#userName").keyup(function(){
+            let userName  = $(this).val();
+            let userNameRE = /^[a-zA-Z\s]{3,10}$/;
+            if(!userNameRE.test(userName)){
+                $(this).css('border','2px solid red');
+                $(this).next('small').show().text('please enter correct name');
+            }
+            else{
+                $(this).css('border','2px solid  green');
+                $(this).next('small').hide();
+            }
+        })
+        //UserName RE  done
+
+        //email RE
+        $("#userEmail").keyup(function(){
+            let userEmail  = $(this).val();
+            let userEmailRE = /^[a-zA-Z0-9_]{3,}[@][a-z]{5,}[.][a-z]{2,3}$/;
+            if(!userEmailRE.test(userEmail)){
+                $(this).css('border','2px solid red');
+                $(this).next('small').show().text('please enter correct  email format');
+            }
+            else{
+                $(this).css('border','2px solid  green');
+                $(this).next('small').hide();
+            }
+        })
+
+        //email RE Done
+
+        //password RE
+        $("#userPassword").keyup(function(){
+            let userPassword  = $(this).val();
+            let userPasswordRE = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!#@$]).{8,16}$/;
+            if(!userPasswordRE.test(userPassword)){
+                $(this).css('border','2px solid red');
+                $(this).next('small').show().text('password should contain atleast one uppercase one lowercase  one digit and one special character');
+            }
+            else{
+                $(this).css('border','2px solid  green');
+                $(this).next('small').hide();
+            }
+        })
+        //password  RE Done
+        //confirm paasword  RE
+        $("#userConfirmpassword").keyup(function(){
+        
+            let userPassword  = $("#userPassword").val();
+            let userConfirmpassword  =   $(this).val();
+            
+            if(userPassword != userConfirmpassword){
+                $(this).css('border','2px solid red');
+                $(this).next('small').show().text('password  not matched');
+            }
+            else{
+                $(this).css('border','2px solid  green');
+                $(this).next('small').hide();
+            }
+        })
+             //confirm Password RE Done
+        function emptyFields(id){
+            if($(id).val()  ==""){
+                $(id).css('border','2px  solid red');
+                $(id).next('small').show().text("please filled out  this field").css('color','red');
+            }
+        }
+        $("#sub").click(function(){
+            let userName  = $("#userName").val();
+            let userNameRE = /^[a-zA-Z\s]{3,10}$/;
+            let userEmail  = $("#userEmail").val();
+            let userEmailRE = /^[a-zA-Z0-9_]{3,}[@][a-z]{5,}[.][a-z]{2,3}$/;
+            let userPassword  = $("#userPassword").val();
+            let userPasswordRE = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!#@$]).{8,16}$/;
+            let userConfirmpassword  = $("#userConfirmpassword").val();
+      
+            emptyFields("#userName");
+            emptyFields("#userEmail");
+            emptyFields("#userPassword");
+            emptyFields("#userConfirmpassword");
+
+        })
+       
+    </script>
+</body>
+</html>
