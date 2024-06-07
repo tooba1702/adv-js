@@ -123,8 +123,33 @@
             emptyFields("#userPassword");
             emptyFields("#userConfirmpassword");
 
+
+
+            7-june-24
+
+         let myData = JSON.parse(localStorage.getItem('myData')) || [];
+
+        if(userNameRE.test(userName) && userEmailRE.test(userEmail) && userPasswordRE.test(userPassword)){
+
+            myData.push({"name":userName , "email":userEmail , "password":userPassword});
+            localStorage.setItem('myData',JSON.stringify(myData));
+            $('input').val('')
+            $('input').css('border','')
+            location.assign("selectlocal.html");
+        }
+       else{
+        alert("invalid Data");
+       }
+
         })
-       
+
+
+                  ------  selectlocal.html file
+
+
+        
+
+        
     </script>
 </body>
 </html>
