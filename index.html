@@ -120,23 +120,24 @@
             emptyFields("#userEmail");
             emptyFields("#userPassword");
             emptyFields("#userConfirmpassword");
-            let myData = JSON.parse(localStorage.getItem('myData')) || [];
 
-if(userNameRE.test(userName) && userEmailRE.test(userEmail) && userPasswordRE.test(userPassword)){
 
-    myData.push({"name":userName , "email":userEmail , "password":userPassword});
-    localStorage.setItem('myData',JSON.stringify(myData));
-    $('input').val('')
-    $('input').css('border','')
-    location.assign("selectlocal.html");
-}
-else{
-alert("invalid Data");
-}
+         let myData = JSON.parse(localStorage.getItem('myData')) || [];
 
-})
-        
-       
-    </script>
+        if(userNameRE.test(userName) && userEmailRE.test(userEmail) && userPasswordRE.test(userPassword)){
+
+            myData.push({"name":userName , "email":userEmail , "password":userPassword});
+            localStorage.setItem('myData',JSON.stringify(myData));
+            $('input').val('')
+            $('input').css('border','')
+            location.assign("selectlocal.html");
+        }
+       else{
+        alert("invalid Data");
+       }
+
+        })
+
+ </script>
 </body>
 </html>
